@@ -11,7 +11,7 @@
     puts "Good Luck! <_<"
     end
 
-
+=begin
 class Elements
     def initialize
       @game = GameInfo.new  
@@ -19,6 +19,7 @@ class Elements
       @player1 = Player.new
       @player2 = Player.new
     end
+=end
 
     # Users input
     def players_info
@@ -64,14 +65,14 @@ class Elements
         puts "\nIt's a draw! We recommend the rematch!"
         end
     end
-    end
 
     # End of the game
-    def end
-    puts "Thanks for playing Tic Tac Toe!"
+    def end_game
+      puts "Thanks for playing Tic Tac Toe!"
     end
 
-end
+# end
+# Elements.start
 
 
 
