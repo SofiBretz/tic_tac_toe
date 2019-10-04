@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # Welcome to players
     def welcome
     puts "Welcome Players!"
@@ -8,10 +10,11 @@
     puts "Players take turns putting their marks in empty squares"
     puts "The first player to get 3 marks in a row WIN"
     puts "When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie"
+    puts "Make sure to move in diagonal, horizontal and vertical, otherwise it's going to be an invalid movement"
     puts "Good Luck! <_<"
     end
 
-=begin
+
 class Elements
     def initialize
       @game = GameInfo.new  
@@ -19,7 +22,7 @@ class Elements
       @player1 = Player.new
       @player2 = Player.new
     end
-=end
+end
 
     # Users input
     def players_info
@@ -52,6 +55,10 @@ class Elements
         puts "       #{@board[6]} | #{@board[7]} | #{@board[8]} "
     end
 
+    #when the game is in process and It's the turn of the next player this sign appears:
+    #puts "Now it's turn of player "
+
+
     # Score of the game 
     def score
         turn until @game.over?
@@ -70,10 +77,13 @@ class Elements
     def end_game
       puts "Thanks for playing Tic Tac Toe!"
     end
+end
 
-# end
+
 # Elements.start
 
-
+element = Elements.new
+element.players_info
+welcome
 
 
