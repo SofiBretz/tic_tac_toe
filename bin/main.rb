@@ -10,6 +10,15 @@ puts "When all 9 squares are full, the game is over. If no player has 3 marks in
 puts "Good Luck! <_<"
 end
 
+#
+class Components
+    def initialize
+      @game = GameInfo.new  
+      @board = @game.init_board(9)
+      @player1 = Player.new
+      @player2 = Player.new
+    end
+
 # Users input
 def players_info
 puts "Welcome to Tic-Tac-Toe"
@@ -30,7 +39,7 @@ display
 end
 
 def display
-    puts "\n       #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts "\n     #{@board[0]} | #{@board[1]} | #{@board[2]} "
 
     puts '       ---------- '
 
@@ -40,6 +49,27 @@ def display
 
     puts "       #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
+
+# Start the game 
+def score
+    turn until @game.over?
+    if @game.won?
+      if @board[@game.won?.first] == 'X'
+        puts "\nYou won! Congratulations, #{@player1.name}!"
+      else
+        puts "\nYou won! Congratulations, #{@player2.name}!"
+      end
+    elsif @game.draw?
+      puts "\nIt's a draw! We recommend the rematch!"
+    end
+  end
+end
+
+# End of the game
+def end
+   puts "Thanks for playing Tic Tac Toe!"
+ end
+
 
   
 
