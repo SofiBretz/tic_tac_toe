@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 # Welcome to players
     def welcome
     puts "Welcome Players!"
