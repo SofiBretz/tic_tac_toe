@@ -1,9 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-class Welcome_Game
+require_relative '../lib/game.rb'
+require_relative '../lib/players.rb'
+require_relative '../lib/board.rb'
+
+
 # Welcome to players
-    def self.welcome
+    def welcome
     puts "Welcome Players!"
     puts "Tic Tac Toe is a game for 2 players."
     puts "The game is played on a grid that's 3 x 3"
@@ -14,40 +18,61 @@ class Welcome_Game
     puts "Make sure to move in diagonal, horizontal and vertical, otherwise it's going to be an invalid movement"
     puts "Good Luck! <_<"
     end
-end
+    
+    def valid_name(name)
+        loop do
+          valid = name.empty?
+          return name unless valid
+        end
+      end
+      
+      def valid_piece(piece)
+        loop do
+          arr = ["X", "O"]
+          return piece if arr.include? piece
+      
+        puts "Wow! It should be x or o, stay focus *_*' "
+          piece = gets.chomp.upcase!
+        end
+      end
+      
+    def display(grid)
+        puts '---------'
+        puts "#{grid[0][0]} | #{grid[0][1]} | #{grid[0][2]}"
+        puts '---------'
+        puts "#{grid[1][0]} | #{grid[1][1]} | #{grid[1][2]}"
+        puts '---------'
+        puts "#{grid[2][0]} | #{grid[2][1]} | #{grid[2][2]}"
+        puts '---------'
+      end
 
-class Players
-    # Users input
-    def self.players_info
+def players_info
     puts "Welcome to Tic-Tac-Toe"
     puts "Are you ready?"
-
-        puts "Ok! Player 1 give us ur name"
-        @player1 = gets.chomp.capitalize!
-        puts "#{@player1} you get the O"
-
-        puts "Ok! Now is turn for Player 2"
-
-        puts "Player 2 give us ur name"
-        @player2 = gets.chomp.capitalize!
-        puts "#{@player2} for you is X"
-
-    puts "Let the game begin!"    
-    end
+    puts "Ok! Player 1 give us ur name: "
+  name = gets.chomp
+  player1 = Player.new(valid_name(name))
+  puts "Which symbol you want? 'x' or 'o'"
+  piece = gets.chomp
+  player1.piece = valid_piece(piece)
+  puts "Ok! Now is turn for Player 2"
+  puts "Player 2 give us ur name: "
+  name = gets.chomp
+  player2 = Player.new(valid_name(name))
+  player2.piece = player1.piece == 'X' ? 'O' : 'X'
+  [player1, player2]
+  puts "Let the game begin!"
 end
 
-class Board
-    def board
-        puts "\n     #{@board[0]} | #{@board[1]} | #{@board[2]} "
-        puts '       ---------- '
-        puts "       #{@board[3]} | #{@board[4]} | #{@board[5]} "
-        puts '       ---------- '
-        puts "       #{@board[6]} | #{@board[7]} | #{@board[8]} "
-    end
+players = players_info
+player1 = players[0]
+player2 = players[1]
 
-    #when the game is in process and It's the turn of the next player this sign appears:
-    #puts "Now it's turn of player "
-end
+# loop do here 7/10/2019
+
+
+
+
 
 =begin
 class Game

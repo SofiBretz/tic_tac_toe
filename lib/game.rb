@@ -10,11 +10,13 @@ class Game
       @end_round = false
     end
   
+=begin
     def players(first, second)
       @player1 = Player.new(first, @symbol1)
       @player2 = Player.new(second, @symbol2)
     end
-  
+
+
     def change_player
       @current_player = @current_player == @player1 ? @player2 : @player1
     end
@@ -26,7 +28,8 @@ class Game
         puts "#{@player2.player} Choose a number between 1 and 9 to put your symbol."
       end
     end
-  
+=end
+ 
     def player_move
       while @end_round == false
         player_message
