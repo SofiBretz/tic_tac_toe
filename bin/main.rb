@@ -49,6 +49,7 @@ class Board
     #puts "Now it's turn of player "
 end
 
+=begin
 class Game
     def initialize
       @game = GameInfo.new  
@@ -56,8 +57,8 @@ class Game
       @player1 = Player.new
       @player2 = Player.new
     end
-
 end
+=end
 
 class Score
     # Score of the game 
