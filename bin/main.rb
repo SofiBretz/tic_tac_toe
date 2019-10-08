@@ -28,7 +28,7 @@ require_relative '../lib/board.rb'
       
       def valid_piece(piece)
         loop do
-          arr = ["X", "O"]
+          arr = ["x", "o"]
           return piece if arr.include? piece
       
         puts "Wow! It should be x or o, stay focus *_*' "
@@ -59,7 +59,7 @@ def players_info
   puts "Player 2 give us ur name: "
   name = gets.chomp
   player2 = Player.new(valid_name(name))
-  player2.piece = player1.piece == 'X' ? 'O' : 'X'
+  player2.piece = player1.piece == 'x' ? 'o' : 'x'
   [player1, player2]
   puts "Let the game begin!"
 end
@@ -68,7 +68,66 @@ players = players_info
 player1 = players[0]
 player2 = players[1]
 
-# loop do here 7/10/2019
+# Movements and conditions of the game
+loop do
+  board = Board.new
+  grid = board.grid
+  display(grid)
+
+  loop do
+    begin
+        puts "Ok, #{player1}, it`'`s your turn, select a number between 1-9"
+        place = gets.chomp
+        result = board.move(player1.piece, place.to_i)
+        display(result[2])
+    rescue StandardError
+      puts "Oh no! You have to select a number between 1-9 \n Remember to fill a blank space."
+      retry
+      end
+    if result[0] == true
+      puts "#{player1.name}, you won!"
+      player1.amount += 1
+      puts "#{player1.name} amount is: #{player1.amount}"
+      puts "#{player2.name} amount is: #{player2.amount}"
+      break
+    end
+    if result[1] == 9
+      puts "That`'`s a draw!"
+      puts "#{player1.name}, your score: #{player1.amount}"
+      puts "#{player2.name}, your score: #{player2.amount}"
+      break
+    end
+
+    begin
+      puts "Ok,#{player2}, it`'`s your turn, select a number between 1-9"
+      place = gets.chomp
+      result = board.move(player2.piece, place.to_i)
+      display(result[2])
+    rescue StandardError
+      puts "Oh no! You have to select a number between 1-9 \n Remember to fill a blank space."
+      retry
+    end
+
+    next unless result[0] == true
+
+    puts "#{player2.name}, you won!"
+    player2.amount += 1
+    puts "#{player1.name}, your score: #{player1.amount}"
+    puts "#{player2.name}, your score: #{player2.amount}"
+    break
+  end
+
+  play_again = 'n'
+
+  sleep 0.5
+  puts 'GAME OVER'
+  sleep 0.5
+
+  puts 'Do you want a revenge? (y/n)'
+  break if gets.chomp == play_again
+end
+
+
 
 
 
