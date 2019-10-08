@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Player
-  attr_accessor :name, :piece, :amount
+  attr_accessor :name, :element, :score
 
   def initialize(name)
     @name = name
-    @piece = nil
-    @amount = 0
+    @element = nil
+    @score = 0
   end
 end
   

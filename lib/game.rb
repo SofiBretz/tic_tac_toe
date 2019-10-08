@@ -1,31 +1,28 @@
 # frozen_string_literal: true
 
-# Class Game
 class Game
-  attr_accessor :grid
+  attr_accessor :cell
 
-  def initialize(grid)
-    @grid = grid
+  def initialize(cell)
+    @cell = cell
   end
 
   def win_game
     diagonal || vertical || horizontal
   end
 
-  # private methods
   private
 
-  # Diagonals
   def diagonal
     left_diagonal || right_diagonal
   end
 
   def left_diagonal
-    @grid[0][0] == @grid[1][1] && @grid[1][1] == @grid[2][2]
+    @cell[0][0] == @cell[1][1] && @cell[1][1] == @cell[2][2]
   end
 
   def right_diagonal
-    @grid[2][0] == @grid[1][1] && @grid[1][1] == @grid[0][2]
+    @cell[2][0] == @cell[1][1] && @cell[1][1] == @cell[0][2]
   end
 
   # Verticals
@@ -34,31 +31,30 @@ class Game
   end
 
   def vertical_one
-    @grid[0][0] == @grid[1][0] && @grid[1][0] == @grid[2][0]
+    @cell[0][0] == @cell[1][0] && @cell[1][0] == @cell[2][0]
   end
 
   def vertical_two
-    @grid[0][1] == @grid[1][1] && @grid[1][1] == @grid[2][1]
+    @cell[0][1] == @cell[1][1] && @cell[1][1] == @cell[2][1]
   end
 
   def vertical_three
-    @grid[0][2] == @grid[1][2] && @grid[1][2] == @grid[2][2]
+    @cell[0][2] == @cell[1][2] && @cell[1][2] == @cell[2][2]
   end
 
-  # Horizontals
   def horizontal
     horizontal_one || horizontal_two || horizontal_three
   end
 
   def horizontal_one
-    @grid[0][0] == @grid[0][1] && @grid[0][1] == @grid[0][2]
+    @cell[0][0] == @cell[0][1] && @cell[0][1] == @cell[0][2]
   end
 
   def horizontal_two
-    @grid[1][0] == @grid[1][1] && @grid[1][1] == @grid[1][2]
+    @cell[1][0] == @cell[1][1] && @cell[1][1] == @cell[1][2]
   end
 
   def horizontal_three
-    @grid[2][0] == @grid[2][1] && @grid[2][1] == @grid[2][2]
+    @cell[2][0] == @cell[2][1] && @cell[2][1] == @cell[2][2]
   end
 end

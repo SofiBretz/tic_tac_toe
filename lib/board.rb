@@ -3,25 +3,24 @@
 require_relative 'players.rb'
 require_relative 'game.rb'
 
-# Class Board
 class Board
-  attr_accessor :grid, :counter
-  def initialize(grid = [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+  attr_accessor :cell, :counter
+  def initialize(cell = [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
     @counter = 0
-    @grid = grid
+    @cell = cell
   end
 
-  def move(piece, place)
+  def move(element, place)
     if place <= 3
-      @grid[0][@grid[0].index(place)] = piece
+      @cell[0][@cell[0].index(place)] = element
     elsif place <= 6
-      @grid[1][@grid[1].index(place)] = piece
+      @cell[1][@cell[1].index(place)] = element
     else
-      @grid[2][@grid[2].index(place)] = piece
+      @cell[2][@cell[2].index(place)] = element
     end
-    result = Game.new(@grid)
+    result = Game.new(@cell)
     result.win_game
     @counter += 1
-    [result.win_game, @counter, @grid]
+    [result.win_game, @counter, @cell]
   end
 end
