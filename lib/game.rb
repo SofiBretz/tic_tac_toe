@@ -1,77 +1,64 @@
+# frozen_string_literal: true
+
+# Class Game
 class Game
-    attr_reader :board_game, :player1, :player2, :symbol1, :symbol2
-  
-    def initialize
-      @input = PlayerInput.new
-      @board_game = Board.new
-      @current_player = @player1
-      @symbol1 = 'X'
-      @symbol2 = 'O'
-      @end_round = false
-    end
-  
-=begin
-    def players(first, second)
-      @player1 = Player.new(first, @symbol1)
-      @player2 = Player.new(second, @symbol2)
-    end
+  attr_accessor :grid
 
-
-    def change_player
-      @current_player = @current_player == @player1 ? @player2 : @player1
-    end
-  
-    def player_message
-      if @current_player == @player1
-        puts "#{@player1.player} Choose a number between 1 and 9 to put your symbol."
-      else
-        puts "#{@player2.player} Choose a number between 1 and 9 to put your symbol."
-      end
-    end
-=end
- 
-    def player_move
-      while @end_round == false
-        player_message
-        if @current_player == @player1
-          @player_input = @input.player_input
-          if @board_game.board[@player_input].is_a?(Integer)
-            @board_game.board[@player_input] = @player1.symbol
-            @end_round = true
-          end
-        else
-          @player_input = @input.player_input
-          if @board_game.board[@player_input].is_a?(Integer)
-            @board_game.board[@player_input] = @player2.symbol
-            @end_round = true
-          end
-        end
-      end
-      change_player
-      @board_game.draw_board
-      @end_round = false
-    end
-  
-    def draw?
-      true if @board_game.board.none? { |idx| idx.is_a?(Integer) }
-    end
-  
-    def win?
-      true if @board_game.win_dig || @board_game.win_ver || @board_game.win_hor
-    end
-  
-    def winner
-      @current_player == @player1 ? @player2.player : @player1.player
-    end
+  def initialize(grid)
+    @grid = grid
   end
 
-=begin
-class Game
-    def initialize
-      @game = GameInfo.new  
-      @board = @game.init_board(9)
-      @player1 = Player.new
-      @player2 = Player.new
-    end
+  def win_game
+    diagonal || vertical || horizontal
+  end
+
+  # private methods
+  private
+
+  # Diagonals
+  def diagonal
+    left_diagonal || right_diagonal
+  end
+
+  def left_diagonal
+    @grid[0][0] == @grid[1][1] && @grid[1][1] == @grid[2][2]
+  end
+
+  def right_diagonal
+    @grid[2][0] == @grid[1][1] && @grid[1][1] == @grid[0][2]
+  end
+
+  # Verticals
+  def vertical
+    vertical_one || vertical_two || vertical_three
+  end
+
+  def vertical_one
+    @grid[0][0] == @grid[1][0] && @grid[1][0] == @grid[2][0]
+  end
+
+  def vertical_two
+    @grid[0][1] == @grid[1][1] && @grid[1][1] == @grid[2][1]
+  end
+
+  def vertical_three
+    @grid[0][2] == @grid[1][2] && @grid[1][2] == @grid[2][2]
+  end
+
+  # Horizontals
+  def horizontal
+    horizontal_one || horizontal_two || horizontal_three
+  end
+
+  def horizontal_one
+    @grid[0][0] == @grid[0][1] && @grid[0][1] == @grid[0][2]
+  end
+
+  def horizontal_two
+    @grid[1][0] == @grid[1][1] && @grid[1][1] == @grid[1][2]
+  end
+
+  def horizontal_three
+    @grid[2][0] == @grid[2][1] && @grid[2][1] == @grid[2][2]
+  end
 end
-=end

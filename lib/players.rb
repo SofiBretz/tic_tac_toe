@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-# Player's class
-class Players
-    attr_reader :player, :symbol
-    def initialize(player, symbol)
-      @player = player
-      @symbol = symbol
-    end
+class Player
+  attr_accessor :name, :piece, :amount
+
+  def initialize(name)
+    @name = name
+    @piece = nil
+    @amount = 0
   end
+end
   
  
