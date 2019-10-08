@@ -25,7 +25,6 @@ class Game
     @cell[2][0] == @cell[1][1] && @cell[1][1] == @cell[0][2]
   end
 
-  # Verticals
   def vertical
     vertical_one || vertical_two || vertical_three
   end

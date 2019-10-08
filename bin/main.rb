@@ -22,13 +22,13 @@ require_relative '../lib/board.rb'
   welcome
     
   def display(cell)
-    puts '---------'
+    puts '/////////'
     puts "#{cell[0][0]} | #{cell[0][1]} | #{cell[0][2]}"
-    puts '---------'
+    puts '/////////'
     puts "#{cell[1][0]} | #{cell[1][1]} | #{cell[1][2]}"
-    puts '---------'
+    puts '/////////'
     puts "#{cell[2][0]} | #{cell[2][1]} | #{cell[2][2]}"
-    puts '---------'
+    puts '/////////'
   end
 
   def name_valid?(name)
@@ -42,8 +42,9 @@ require_relative '../lib/board.rb'
     loop do
       arr = %w[X O]
       return element if arr.include? element
-      puts "Wow! It should be x or o, stay focus *_*' "
-      element = gets.chomp
+
+      puts 'Wow! It should be x or o, stay focus *_*'
+      element = gets.chomp.upcase!
     end
   end
 
@@ -60,14 +61,12 @@ require_relative '../lib/board.rb'
     player2 = Player.new(name_valid?(name))
     player2.element = player1.element == 'X' ? 'O' : 'X'
     [player1, player2]
-    #puts "Let the game begin!" broken the logic why?
   end
 
 players = info_players
 player1 = players[0]
 player2 = players[1]
 
-# Movements and conditions of the game
 loop do
   board = Board.new
   cell = board.cell
@@ -75,16 +74,16 @@ loop do
 
   loop do
     begin
-        puts "Ok, #{player1.name}, it`'`s your turn, select a number between 1-9"
+        puts "Ok, #{player1.name}, it's your turn, select a number between 1-9"
         place = gets.chomp
         result = board.move(player1.element, place.to_i)
         display(result[2])
     rescue StandardError
-      puts "Oh no! You have to select a number between 1-9 \n Remember to fill a blank space."
+      puts "Oh no! You have to select a number between 1-9 \nRemember to fill a blank space."
       retry
       end
     if result[0] == true
-      puts "#{player1.name}, you won!"
+      puts "#{player1.name}, you won!!!"
       player1.score += 1
       puts "#{player1.name}, your score: #{player1.score}"
       puts "#{player2.name}, your score: #{player2.score}"
@@ -98,18 +97,18 @@ loop do
     end
 
     begin
-      puts "Ok,#{player2.name}, it`'`s your turn, select a number between 1-9"
+      puts "Ok,#{player2.name}, it's your turn, select a number between 1-9"
       place = gets.chomp
       result = board.move(player2.element, place.to_i)
       display(result[2])
     rescue StandardError
-      puts "Oh no! You have to select a number between 1-9 \n Remember to fill a blank space."
+      puts "Oh no! You have to select a number between 1-9 \nRemember to fill a blank space."
       retry
     end
 
     next unless result[0] == true
 
-    puts "#{player2.name}, you won!"
+    puts "#{player2.name}, you won!!!"
     player2.score += 1
     puts "#{player1.name}, your score: #{player1.score}"
     puts "#{player2.name}, your score: #{player2.score}"
