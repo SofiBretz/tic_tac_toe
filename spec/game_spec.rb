@@ -75,4 +75,4 @@ RSpec.describe Game do
       expect(result_d.win_game).to eql(true)
     end
   end
-end # end line
+end
