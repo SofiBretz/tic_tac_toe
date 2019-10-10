@@ -21,4 +21,4 @@ RSpec.describe Board do
       expect(board_win.move('o', 1)).to eql([true, 1, [%w[o o o], [4, 5, 6], [7, 8, 9]]])
     end
   end
-end 
+end
