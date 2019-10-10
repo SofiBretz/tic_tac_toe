@@ -35,4 +35,28 @@ RSpec.describe Game do
       expect(result1.win_game).to eql(true)
     end
   end
+
+  describe 'possible positon to win on the first column' do
+    let(:vertical) { [['O', 2, 3], ['O', 5, 6], ['O', 8, 9]] }
+    let(:result2) { Game.new(vertical) }
+    it 'returns true when the first row has 3 equal symbols on the vertical' do
+      expect(result2.win_game).to eql(true)
+    end
+  end
+
+  describe 'possible positon to win on the second column' do
+    let(:vertical) { [[1, 'O', 3], [4, 'O', 6], [7, 'O', 9]] }
+    let(:result2) { Game.new(vertical) }
+    it 'returns true when the first row has 3 equal symbols on the vertical' do
+      expect(result2.win_game).to eql(true)
+    end
+  end
+
+  describe 'possible positon to win on the third column' do
+    let(:vertical) { [[1, 2, 'O'], [4, 5, 'O'], [7, 8, 'O']] }
+    let(:result2) { Game.new(vertical) }
+    it 'returns true when the first row has 3 equal symbols on the vertical' do
+      expect(result2.win_game).to eql(true)
+    end
+  end
 end # end line
