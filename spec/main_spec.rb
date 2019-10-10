@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../bin/main.rb'
 
 describe '#valid_name' do 
