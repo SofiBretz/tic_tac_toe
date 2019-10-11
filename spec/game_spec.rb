@@ -75,4 +75,36 @@ RSpec.describe Game do
       expect(result_d.win_game).to eql(true)
     end
   end
+
+  describe 'possible positon to draw' do
+    let(:draw_1) { [%w[X O X], %w[X O X], %w[O X O]] }
+    let(:result_dr) { Game.new(draw_1) }
+    it 'returns draw when there no winner' do
+      expect(result_dr.win_game).to eql(false)
+    end
+  end
+
+  describe 'possible positon to draw' do
+    let(:draw_2) { [%w[O X O], %w[O X O], %w[X O X]] }
+    let(:result_dr) { Game.new(draw_2) }
+    it 'returns draw when there no winner' do
+      expect(result_dr.win_game).to eql(false)
+    end
+  end
+
+  describe 'possible positon to draw' do
+    let(:draw_3) { [%w[X O X], %w[O X O], %w[O X O]] }
+    let(:result_dr) { Game.new(draw_3) }
+    it 'returns draw when there no winner' do
+      expect(result_dr.win_game).to eql(false)
+    end
+  end
+
+  describe 'possible positon to draw' do
+    let(:draw_4) { [%w[O X O], %w[X O X], %w[X O X]] }
+    let(:result_dr) { Game.new(draw_4) }
+    it 'returns draw when there no winner' do
+      expect(result_dr.win_game).to eql(false)
+    end
+  end
 end
