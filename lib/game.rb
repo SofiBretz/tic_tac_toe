@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Game
-  attr_accessor :cell
+  attr_writer :cell
 
   def initialize(cell)
     @cell = cell
