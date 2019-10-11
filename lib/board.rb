@@ -18,7 +18,7 @@ class Board
     else
       @cell[2][@cell[2].index(place)] = element
     end
-    result = Game.new(@cell)
+    result = WinGame.new(@cell)
     result.win_game
     @counter += 1
     [result.win_game, @counter, @cell]
