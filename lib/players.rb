@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Player
-  attr_accessor :name, :element
-  attr_reader :score
+  attr_accessor :name, :element, :score
 
   def initialize(name)
     @name = name
