@@ -89,7 +89,7 @@ RSpec.describe Draw do
   let(:draw_4) { [%w[O X O], %w[X O X], %w[X O X]] }
   let(:result_dr) { Draw.new(draw_4) }
 
-  describe 'possible positon to draw' do 
+  describe 'possible positon to draw' do
     it 'returns draw when there no winner' do
       expect(result_dr.win_game).to eql(false)
     end
