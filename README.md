@@ -4,7 +4,7 @@ The main goal of this project was built a tic tac toe game.
 
 ## Live Version
 
-<a href="#">Live Version on Repl.it</a>
+<a href="https://repl.it/@SofiBretz/Tic-Tac-Toe">Live Version on Repl.it</a>
 
 ## Tecnologies 
 
@@ -21,7 +21,7 @@ The main goal of this project was built a tic tac toe game.
 
 ## Instructions to play
 
-* Click here -> <a href="#">Tic Tac Toe Game</a>
+* Click here -> <a href="https://repl.it/@SofiBretz/Tic-Tac-Toe">Tic Tac Toe Game</a>
 * Then press the run button
 * Follow the instructions of our bot ;) and good luck!
 
@@ -29,4 +29,4 @@ The main goal of this project was built a tic tac toe game.
 ## Authors - click on the link below to see the authors' github
 
 * <a href="https://github.com/thsvr"> Github: Thaís Vieira Azevedo</a>
-* <a href="https://github.com/SofiBretz">Github: Sofia Barrantes</a> 
+* <a href="https://github.com/SofiBretz">Github: Sofia Barrantes</a>  
