@@ -90,7 +90,7 @@ loop do
       break
     end
     if result[1] == 9
-      puts "That`'`s a draw!"
+      puts "That's a draw!"
       puts "#{player1.name}, your score: #{player1.score}"
       puts "#{player2.name}, your score: #{player2.score}"
       break
